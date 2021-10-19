@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css"><!--Link to CSS-->
+{% endblock style %}
+{% block user_info %}
+    {% if status == False %}
+        <a href="{% url 'login' %}">Login</a>
+    {% else %}
+        <a href="{% url 'logout' %}" style="color: #ff665a">Logout</a>
+    {% endif %}
+{% endblock user_info %}
+{% block body %}
+    <section id="banner">
+        <div class="container">
+            <h1>Budget Homes
+            </h1>
+        </div>
+    </section>
+
+    <!--Slogan-->
+    <div class="container">
+        <section id="main">
+            <h1>Where will you stay?</h1>
+            <p>Your new home is only one click away.</p>
+        </section>
+        <aside id="sidebar">
+            <h3>Welcome to Budget Homes </h3>
+            <p>To get started, please navigate to "listings", a home is waiting for you now!</p>
+        </aside>
+    </div>
+{% endblock body %}
+
+{% block info %}
+    <div id="content">
+        <h3>Safety and Hygiene</h3>
+        <p>Here are budget homes, we are 100% commited to providing you with a safe accommodation and environment.
+            During these times we have also implemented a regular compulsory apartment sanitisation to owners so you can
+            enjoy your time without the stress of the outside world.</p>
+
+    </div>
+{% endblock info %}

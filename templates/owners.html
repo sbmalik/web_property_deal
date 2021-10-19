@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="/static/css/owners.css"><!--Link to CSS-->
+{% endblock style %}
+{% block user_info %}
+    {% if status == False  %}
+        <a href="{% url 'login' %}">Login</a>
+    {% else %}
+        <a href="{% url 'logout' %}" style="color: #ff665a">Logout</a>
+    {% endif %}
+{% endblock user_info %}
+{% block body %}
+    <section id="banner">
+        <div class="container">
+            <h1>Our Homes
+            </h1>
+        </div>
+    </section>
+
+    {% for home in homes %}
+        <!--Listing 1-->
+        <div class="container">
+            <section id="main" style="background-image: url({{ home.pic.url }})">
+                <h1>Budget Home</h1>
+                <p>{{ home.name }}</p>
+            </section>
+            <aside id="sidebar">
+                <h1>{{ home.price }} AUD</h1>
+                <table>
+                    <tr>
+                        <td>Rooms</td>
+                        <td>{{ home.rooms }}</td>
+                    </tr>
+                    <tr>
+                        <td>Bathrooms</td>
+                        <td>{{ home.bath }}</td>
+                    </tr>
+                    <tr>
+                        <td>Garage</td>
+                        <td>{{ home.garage }}</td>
+                    </tr>
+                    <tr>
+                        <td>Balcony</td>
+                        <td>{{ home.balcony }}</td>
+                    </tr>
+                    <tr>
+                        <td>Shared</td>
+                        <td>{{ home.shared }}</td>
+                    </tr>
+                </table>
+                <button type="button" {% if home.status == 'Awaiting' %}
+                        id="awaiting"{% endif %}>
+                    {{ home.status }}
+                </button><!--To show status of listing-->
+            </aside>
+        </div>
+
+    {% endfor %}
+{% endblock body %}
+<!--Info for Owners-->
+{% block info %}
+    <div id="content">
+        <h3>To our valued owners</h3>
+        <p>Please be patient, as we are helping to verify that your home is ready to accommodate our customers.</p>
+
+    </div>
+{% endblock info %}

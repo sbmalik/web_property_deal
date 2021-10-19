@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="/static/css/services.css"><!--Link to CSS-->
+{% endblock style %}
+{% block user_info %}
+    {% if status == False %}
+        <a href="{% url 'login' %}">Login</a>
+    {% else %}
+        <a href="{% url 'logout' %}" style="color: #ff665a">Logout</a>
+    {% endif %}
+{% endblock user_info %}
+{% block body %}
+    <!--Slogan-->
+    <div class="container">
+        <section id="main">
+            <h1>Budget Homes</h1>
+            <p>Your new home is only one click away.</p>
+        </section>
+    </div>
+{% endblock body %}
+<!--Services-->
+{% block info %}
+    <div>
+        <div id="content">
+            <h3>Here at Budget Home we will guarantee....</h3>
+            <ul>Lowest prices in all of Australia</ul>
+            <ul>Amazing customer satifaction</ul>
+            <ul>Fast and quick responses</ul>
+        </div>
+    </div>
+{% endblock info %}

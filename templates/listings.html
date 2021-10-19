@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="/static/css/listing.css"><!--Link to CSS-->
+{% endblock style %}
+{% block user_info %}
+    {% if status == False %}
+        <a href="{% url 'login' %}">Login</a>
+    {% else %}
+        <a href="{% url 'logout' %}" style="color: #ff665a">Logout</a>
+    {% endif %}
+{% endblock user_info %}
+<!--Listing 1-->
+{% block body %}
+    <section id="banner">
+        <div class="container">
+            <h1>Listings</h1>
+        </div>
+    </section>
+
+    {% for home in homes %}
+
+        <div class="container">
+            <section id="main" style="background-image: url({{ home.pic.url }})">
+                <h1>Budget Homes</h1>
+                <p>{{ home.name }}</p>
+            </section>
+            <aside id="sidebar">
+                <h1>{{ home.price }} AUD</h1>
+                <table>
+                    <tr>
+                        <td>Rooms</td>
+                        <td>{{ home.rooms }}</td>
+                    </tr>
+                    <tr>
+                        <td>Bathrooms</td>
+                        <td>{{ home.bath }}</td>
+                    </tr>
+                    <tr>
+                        <td>Garage</td>
+                        <td>{{ home.garage }}</td>
+                    </tr>
+                    <tr>
+                        <td>Balcony</td>
+                        <td>{{ home.balcony }}</td>
+                    </tr>
+                    <tr>
+                        <td>Shared</td>
+                        <td>{{ home.shared }}</td>
+                    </tr>
+                </table>
+                <a href="{% url 'house' home.id %}">
+                    <button>Enquire Now</button>
+                </a>
+                <!--To connect to page only for selected accommodation-->
+            </aside>
+        </div>
+    {% endfor %}
+
+{% endblock body %}
+<!--Message-->
+{% block info %}
+    <div id="content">
+        <h3>Budget Homes</h3>
+        <p>If there are no homes that suit you right now, check tomorrow! New listings available everyday!</p>
+    </div>
+{% endblock info %}

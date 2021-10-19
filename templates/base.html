@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!--Title-->
+    <title>Budget Home</title>
+    {% block style %}
+        {#        Put Css Files Here for Every Folder#}
+    {% endblock style %}
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><!--Responsive View-->
+<body>
+<header id="header">
+    <div class="container">
+        <h1>Budget Homes</h1>
+    </div>
+</header>
+<!--Navigation-->
+<nav id="navigation">
+    <div class="container">
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'listings' %}">Listings</a></li>
+            <li><a href="{% url 'owners' %}">Owners</a></li>
+            <li><a href="{% url 'services' %}">Services</a></li>
+            <li>{% block user_info %} {% endblock user_info %}</li>
+        </ul>
+    </div>
+</nav>
+
+{% block body %} {% endblock body %}
+
+<!--Information-->
+<div>
+    {% block info %}
+    {% endblock info %}
+</div>
+
+<!--Footer-->
+<footer id="footer">
+    <p>Copyright &copy; 2020 Budget Homes</p>
+</footer>
+</body>
+</html>

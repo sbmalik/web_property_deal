@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css"><!--Link to CSS-->
+{% endblock style %}
+{% block user_info %}
+    {% if status == False %}
+        <a href="{% url 'login' %}">Login</a>
+    {% else %}
+        <a href="{% url 'logout' %}" style="color: #ff665a">Logout</a>
+    {% endif %}
+{% endblock user_info %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="btn" type="submit" name="Register User">
+            </form>
+        </div>
+    </div>
+{% endblock body %}
